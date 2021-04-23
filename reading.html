@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoe's Reading Notes</title>
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+
+    <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style class="INLINE_PEN_STYLESHEET_ID">
+        @import url("https://rsms.me/inter/inter.css");
+        .hoverable {
+      display: inline-block;
+      backface-visibility: hidden;
+      vertical-align: middle;
+      position: relative;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      tranform: translateZ(0);
+      transition-duration: 0.3s;
+      transition-property: transform;
+    }
+
+    html {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+          "Noto Color Emoji";
+      }
+    
+    .hoverable:before {
+      position: absolute;
+      pointer-events: none;
+      z-index: -1;
+      content: "";
+      top: 100%;
+      left: 5%;
+      height: 5px;
+      width: 90%;
+      opacity: 0;
+      background: -webkit-radial-gradient(center, ellipse, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
+      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
+      /* W3C */
+      transition-duration: 0.3s;
+      transition-property: transform, opacity;
+    }
+    
+    .hoverable:hover,
+    .hoverable:active,
+    .hoverable:focus {
+      transform: translateY(-5px);
+    }
+    
+    .hoverable:hover:before,
+    .hoverable:active:before,
+    .hoverable:focus:before {
+      opacity: 1;
+      transform: translateY(-5px);
+    }
+    
+    @keyframes bounce-animation {
+      16.65% {
+        -webkit-transform: translateY(8px);
+        transform: translateY(8px);
+      }
+      33.3% {
+        -webkit-transform: translateY(-6px);
+        transform: translateY(-6px);
+      }
+      49.95% {
+        -webkit-transform: translateY(4px);
+        transform: translateY(4px);
+      }
+      66.6% {
+        -webkit-transform: translateY(-2px);
+        transform: translateY(-2px);
+      }
+      83.25% {
+        -webkit-transform: translateY(1px);
+        transform: translateY(1px);
+      }
+      100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
+    }
+    .bounce {
+      animation-name: bounce-animation;
+      animation-duration: 2s;
+    }
+    
+    /*everything below here is just setting up the page, so dont worry about it */
+    @media (min-width: 768px) {
+      .navbar {
+        text-align: center !important;
+        float: none;
+        display: inline-block;
+      }
+    }
+    body {
+      
+      background-color: black;
+      
+      color: rgb(255, 255, 255);
+    }
+    h1,h2,h3,h4,p {
+        font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    }
+    
+    nav {
+      background: none !important;
+      text-transform: uppercase;
+
+    }
+    nav li {
+      margin-left: 5em;
+      margin-right: 5em;
+      margin-top: 2em;
+      margin-bottom: 3em;
+    }
+    nav li a {
+      transition: 0.5s color ease-in-out;
+    }
+    
+   
+      </style>
+      <style type="text/css">
+
+ @font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url("font-files/Inter-Thin.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Thin.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 100;
+  font-display: swap;
+  src: url("font-files/Inter-ThinItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-ThinItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("font-files/Inter-ExtraLight.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-ExtraLight.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url("font-files/Inter-ExtraLightItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-ExtraLightItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("font-files/Inter-Light.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Light.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("font-files/Inter-LightItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-LightItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("font-files/Inter-Regular.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Regular.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("font-files/Inter-Italic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Italic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("font-files/Inter-Medium.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Medium.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("font-files/Inter-MediumItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-MediumItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("font-files/Inter-SemiBold.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-SemiBold.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("font-files/Inter-SemiBoldItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-SemiBoldItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("font-files/Inter-Bold.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Bold.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("font-files/Inter-BoldItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-BoldItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("font-files/Inter-ExtraBold.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-ExtraBold.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url("font-files/Inter-ExtraBoldItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-ExtraBoldItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("font-files/Inter-Black.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Black.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url("font-files/Inter-BlackItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-BlackItalic.woff?v=3.18") format("woff");
+}
+
+
+/* ----------------------- variable ----------------------- */
+
+@font-face {
+  font-family: 'Inter var';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('font-files/Inter-roman.var.woff2?v=3.18') format('woff2');
+  font-named-instance: 'Regular';
+}
+
+@font-face {
+  font-family: 'Inter var';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('font-files/Inter-italic.var.woff2?v=3.18') format('woff2');
+  font-named-instance: 'Italic';
+}
+
+/* ----------- experimental multi-axis variable -----------
+
+Slant axis is not yet widely supported (as of February 2019) and thus this
+multi-axis single-file variable font is opt-in rather than the default.
+When using this, you will likely need to set font-variation-settings explicitly, e.g:
+  * { font-variation-settings: "slnt" 0deg }
+  .italic { font-variation-settings: "slnt" 10deg }
+*/
+
+@font-face {
+  font-family: 'Inter var experimental';
+  font-style: oblique 0deg 10deg;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('font-files/Inter.var.woff2?v=3.18') format('woff2');
+}
+
+/* Legacy name (became legacy on Feb 2, 2019) */
+@font-face {
+  font-family: 'Inter var alt';
+  font-weight: 100 900;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  font-display: swap;
+  src: url("font-files/Inter-roman.var.woff2?v=3.18") format("woff2");
+}
+@font-face {
+  font-family: 'Inter var alt';
+  font-weight: 100 900;
+  font-style: italic;
+  font-named-instance: 'Italic';
+  font-display: swap;
+  src: url("font-files/Inter-italic.var.woff2?v=3.18") format("woff2");
+}
+        
+        
+        </style>
+
+
+     
+</head>
+<body>
+    <!-- nav -->
+    <div class="container-fluid">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav">
+              <li><a id="len1" class="hoverable" href="index.html">Home</a></li>
+              <li><a id="len2" class="hoverable" href="project1.html">Project 1</a></li>
+              <li><a id="len3" class="hoverable" href="project2.html">Project 2</a></li>
+              <li><a id="len4" class="hoverable" href="project3.html">Project 3</a></li>
+              <li><a id="len5" class="hoverable" href="project4.html">Project 4</a></li>
+              <li><a id="len6" class="hoverable" href="reading.html">Reading</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div id="what-the-hell-is-this">
+             <!-- nav end -->
+
+          <!-- title -->
+          <div class="text-center px-3 lg:px-0 py-16">
+            <h1 class="my-4 text-3xl md:text-4xl lg:text-7xl font-white font-extrabold leading-tight font-family: 'Inter' font-style:  normal font-display: swap font-weight: 900">
+              Reading Notes
+            </h1>
+            <!-- <p class="leading-normal pt-10 text-gray-100 text-base font-regular text-xl md:text-2xl lg:text-3xl mb-8">
+                ???
+            </p> -->
+          </div>
+
+          <div class="container mx-auto h-screen">
+          <h2 class="leading-normal font-white text-base text-2xl md:text-3xl lg:text-4xl font-bold pb-8 pt-8">"Everyone has a different expectation of what a prototype is. Industrial designers call a molded foam model a prototype. Interaction designers refer to a simulation of on-screen appearance and behavior as a prototype. Programmers call a test program a prototype. A user studies expert may call a storyboard, which shows a scenario of something being used, a prototype."</h2>
+          <div class="flex justify-start w-full mb-12">
+              <div class="h-1 font-white text-xl md:text-2xl lg:text-3xl opacity-90 my-0 py-0 rounded-t  "> Communication between designers and programmers, industrial designers, and even product managers is a very important thing. As mentioned in the article, such misunderstandings always arise when I communicate with programmers. Not only the definition, the documentation, the essence of what the phrase is trying to express is the logic of each profession is completely different. As an interaction designer, it's important to learn how to think differently and put yourself in other people's shoes.</div>
+            </div>
+
+            <div class="pt-20">
+              <h2 class="leading-normal font-white text-base text-2xl md:text-3xl lg:text-4xl font-bold pb-8 pt-8">"Know your prototype; prepare your audience. Be clear about what design questions are being explored with a given prototype—and what are not. Communicating the specific purposes of a prototype to its audience is a critical aspect of its use. It is up to the designer to prepare an audience for viewing a prototype. Prototypes themselves do not necessarily communicate their purpose. It is especially important to clarify what is and what is not addressed by a prototype when presenting it to any audience beyond the immediate design team." </h2>
+              <div class="flex justify-start w-full mb-12">
+                  <div class="h-1 font-white text-xl md:text-2xl lg:text-3xl opacity-90 my-0 py-0 rounded-t  "> The concepts in this passage have given me a clearer understanding of the designer's role in user testing and how important it is to interject into the process. It's not only about getting users to accomplish a specific goal in the prototype and give general feedback on the overall experience, but also about giving them a clearer understanding of what they should expect from the prototype, what we're testing, and what kind of feedback we're hoping to get.</div>
+                </div>
+
+                <div class="pt-20">
+                  <h2 class="leading-normal font-white text-base text-2xl md:text-3xl lg:text-4xl font-bold pb-8 pt-8">“Is a brick a prototype? The answer depends on how it is used. If it is used to represent the weight and scale of some future artifact, then it certainly is: it prototypes the weight and scale of the artifact. This example shows that prototypes are not necessarily self-explanatory. What is significant is not what media or tools were are used to create them, but how they are used by a designer to explore or demonstrate some aspect of the future artifact.” </h2>
+                  <div class="flex justify-start w-full mb-12">
+                      <div class="h-1 font-white text-xl md:text-2xl lg:text-3xl opacity-90 my-0 py-0 rounded-t  "> The article suggests a new perspective on the prototype itself: if it represents a particular aspect of the design or product itself, it can be anything. Such thinking expands the possibilities of what a prototype can be. When a designer presents a prototype to a test user, it can be a scenario; it can be any object and form. As long as it possesses the need to interact with the user, then it can be a prototype.</div>
+                    </div>
+
+                    <div class="pt-20">
+                      <h2 class="leading-normal font-white text-base text-2xl md:text-3xl lg:text-4xl font-bold pb-8 pt-8">"High quality appearance models are costly to build. There are two common reasons for investing in one: to get a visceral response by making the design seem “real” to any audience (design team, organization, and potential users); and to verify the intended look and feel of the artifact before committing to production tooling. " </h2>
+                      <div class="flex justify-start w-full mb-12">
+                          <div class="h-1 font-white text-xl md:text-2xl lg:text-3xl opacity-90 my-0 py-0 rounded-t  "> I would certainly err on the side of caution when considering this implementation. I am sure that these models were created after other extensive prototyping sessions had been exhausted to reach this state. However, many prototypes reached this level prematurely, only to be completely disassembled and inevitably discarded.</div>
+                        </div>
+
+                        <div class="pt-20">
+                          <h2 class="leading-normal font-white text-base text-2xl md:text-3xl lg:text-4xl font-bold pb-8 pt-8">“But the main problem with the virtual assistant is that it fosters an approach to the world that is literally thoughtless, leaving users disinclined to sit out any particularly prolonged frustration of desire, and ever less critical about the processes that result in the satisfaction of their needs and wants.” 
+                          </h2>
+                          <div class="flex justify-start w-full mb-12">
+                              <div class="h-1 font-white text-xl md:text-2xl lg:text-3xl opacity-90 my-0 py-0 rounded-t  ">I believe the purpose of this model is not particularly frustrating, but a new way to enhance the convenience of life. Instead of using movement to control, users interact with sound and even sight all the time. This mode is a powerful design for a new motion feature.</div>
+                            </div>
+
+
+                            <div class="pt-20">
+                              <h2 class="leading-normal font-white text-base text-2xl md:text-3xl lg:text-4xl font-bold pb-8 pt-8"> "At this largest scale, the internet of things appears to us as a body of rhetoric around the performance and behavior of the so-called “smart city.” This is a place where the instrumentation of the urban fabric, and of all the people moving through the city, is driven by the desire to achieve a more efficient use of space, energy and other resources. If the ambition beneath the instrumentation of the body is a nominal self-mastery, and that of the home convenience, the ambition at the heart of the smart city is nothing other than control."
+                              </h2>
+                              <div class="flex justify-start w-full mb-12">
+                                  <div class="h-1 font-white text-xl md:text-2xl lg:text-3xl opacity-90 my-0 py-0 rounded-t pb-72 "> The control brought by smart cities is also for better management. There have been a lot of smart city projects coming out recently, and I think these concepts are more or less invading the privacy of users. But smart cities and big data whether it's enhanced surveillance, localized cloud systems for data management and processing, or identification systems, we can all benefit from keeping it consistent, which in turn is an improvement to our quality of human life.</div>
+                                </div>
+          <!-- title end -->
+          <!-- content -->
+    
+        <!-- content end -->
+
+        </div>
+      </div>
+      
+
+
+    <main> 
+        
+
+
+
+    </main>
+    <footer></footer>
+</body>
+<script>
+    $(function(){
+  var str = '#len'; //increment by 1 up to 1-nelemnts
+  $(document).ready(function(){
+    var i, stop;
+    i = 1;
+    stop = 4; //num elements
+    setInterval(function(){
+      if (i > stop){
+        return;
+      }
+      $('#len'+(i++)).toggleClass('bounce');
+    }, 500)
+  });
+});
+</script>
+</html>
+

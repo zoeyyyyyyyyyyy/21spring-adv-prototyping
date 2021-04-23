@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Collection</title>
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+
+    <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style class="INLINE_PEN_STYLESHEET_ID">
+        @import url("https://rsms.me/inter/inter.css");
+        .hoverable {
+      display: inline-block;
+      backface-visibility: hidden;
+      vertical-align: middle;
+      position: relative;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      tranform: translateZ(0);
+      transition-duration: 0.3s;
+      transition-property: transform;
+    }
+
+    html {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+          "Noto Color Emoji";
+      }
+    
+    .hoverable:before {
+      position: absolute;
+      pointer-events: none;
+      z-index: -1;
+      content: "";
+      top: 100%;
+      left: 5%;
+      height: 5px;
+      width: 90%;
+      opacity: 0;
+      background: -webkit-radial-gradient(center, ellipse, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
+      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
+      /* W3C */
+      transition-duration: 0.3s;
+      transition-property: transform, opacity;
+    }
+    
+    .hoverable:hover,
+    .hoverable:active,
+    .hoverable:focus {
+      transform: translateY(-5px);
+    }
+    
+    .hoverable:hover:before,
+    .hoverable:active:before,
+    .hoverable:focus:before {
+      opacity: 1;
+      transform: translateY(-5px);
+    }
+    
+    @keyframes bounce-animation {
+      16.65% {
+        -webkit-transform: translateY(8px);
+        transform: translateY(8px);
+      }
+      33.3% {
+        -webkit-transform: translateY(-6px);
+        transform: translateY(-6px);
+      }
+      49.95% {
+        -webkit-transform: translateY(4px);
+        transform: translateY(4px);
+      }
+      66.6% {
+        -webkit-transform: translateY(-2px);
+        transform: translateY(-2px);
+      }
+      83.25% {
+        -webkit-transform: translateY(1px);
+        transform: translateY(1px);
+      }
+      100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
+    }
+    .bounce {
+      animation-name: bounce-animation;
+      animation-duration: 2s;
+    }
+    
+    /*everything below here is just setting up the page, so dont worry about it */
+    @media (min-width: 768px) {
+      .navbar {
+        text-align: center !important;
+        float: none;
+        display: inline-block;
+      }
+    }
+    body {
+      
+      background-color: black;
+      
+      color: rgb(255, 255, 255);
+    }
+    h1,h2,h3,h4,p {
+        font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    }
+    
+    nav {
+      background: none !important;
+      text-transform: uppercase;
+
+    }
+    nav li {
+      margin-left: 5em;
+      margin-right: 5em;
+      margin-top: 2em;
+      margin-bottom: 3em;
+    }
+    nav li a {
+      transition: 0.5s color ease-in-out;
+    }
+    
+   
+      </style>
+      <style type="text/css">
+
+ @font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url("font-files/Inter-Thin.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Thin.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 100;
+  font-display: swap;
+  src: url("font-files/Inter-ThinItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-ThinItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("font-files/Inter-ExtraLight.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-ExtraLight.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url("font-files/Inter-ExtraLightItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-ExtraLightItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("font-files/Inter-Light.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Light.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("font-files/Inter-LightItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-LightItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("font-files/Inter-Regular.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Regular.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("font-files/Inter-Italic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Italic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("font-files/Inter-Medium.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Medium.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("font-files/Inter-MediumItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-MediumItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("font-files/Inter-SemiBold.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-SemiBold.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("font-files/Inter-SemiBoldItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-SemiBoldItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("font-files/Inter-Bold.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Bold.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("font-files/Inter-BoldItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-BoldItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("font-files/Inter-ExtraBold.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-ExtraBold.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url("font-files/Inter-ExtraBoldItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-ExtraBoldItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("font-files/Inter-Black.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Black.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url("font-files/Inter-BlackItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-BlackItalic.woff?v=3.18") format("woff");
+}
+
+
+/* ----------------------- variable ----------------------- */
+
+@font-face {
+  font-family: 'Inter var';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('font-files/Inter-roman.var.woff2?v=3.18') format('woff2');
+  font-named-instance: 'Regular';
+}
+
+@font-face {
+  font-family: 'Inter var';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('font-files/Inter-italic.var.woff2?v=3.18') format('woff2');
+  font-named-instance: 'Italic';
+}
+
+/* ----------- experimental multi-axis variable -----------
+
+Slant axis is not yet widely supported (as of February 2019) and thus this
+multi-axis single-file variable font is opt-in rather than the default.
+When using this, you will likely need to set font-variation-settings explicitly, e.g:
+  * { font-variation-settings: "slnt" 0deg }
+  .italic { font-variation-settings: "slnt" 10deg }
+*/
+
+@font-face {
+  font-family: 'Inter var experimental';
+  font-style: oblique 0deg 10deg;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('font-files/Inter.var.woff2?v=3.18') format('woff2');
+}
+
+/* Legacy name (became legacy on Feb 2, 2019) */
+@font-face {
+  font-family: 'Inter var alt';
+  font-weight: 100 900;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  font-display: swap;
+  src: url("font-files/Inter-roman.var.woff2?v=3.18") format("woff2");
+}
+@font-face {
+  font-family: 'Inter var alt';
+  font-weight: 100 900;
+  font-style: italic;
+  font-named-instance: 'Italic';
+  font-display: swap;
+  src: url("font-files/Inter-italic.var.woff2?v=3.18") format("woff2");
+}
+        
+        
+        </style>
+
+
+     
+</head>
+<body>
+    <!-- nav -->
+    <div class="container-fluid">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav">
+              <li><a id="len1" class="hoverable" href="index.html">Home</a></li>
+              <li><a id="len2" class="hoverable" href="project1.html">Project 1</a></li>
+              <li><a id="len3" class="hoverable" href="project2.html">Project 2</a></li>
+              <li><a id="len4" class="hoverable" href="project3.html">Project 3</a></li>
+              <li><a id="len5" class="hoverable" href="project4.html">Project 4</a></li>
+              <li><a id="len6" class="hoverable" href="reading.html">Reading</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div id="what-the-hell-is-this">
+             <!-- nav end -->
+
+          <!-- title -->
+          <div class="text-center px-3 lg:px-0 py-16">
+            <h1 class="my-4 text-3xl md:text-4xl lg:text-7xl font-white font-extrabold leading-tight font-family: 'Inter' font-style:  normal font-display: swap font-weight: 900">
+              Project 3 : Detecting Movement
+            </h1>
+            <p class="leading-normal pt-10 text-gray-100 text-base font-regular text-xl md:text-2xl lg:text-3xl mb-8">
+                This is a simple game of musical performance made with processing minim library.
+            </p>
+    
+          </div>
+          <!-- title end -->
+          <!-- content -->
+          <div class="container mx-auto h-screen">
+          <h2 class="leading-normal font-white text-base text-2xl md:text-3xl lg:text-4xl font-bold pb-8 pt-8">Concept </h2>
+          <div class="flex justify-start w-full mb-12">
+              <div class="h-1 font-white text-xl md:text-2xl lg:text-3xl opacity-90 my-0 py-0 rounded-t  "> This project is a simple game of musical performance using a music visualizer. This music visualizer reads audio data from different instruments, simulates a simple sampler with the computer keyboard, and represents different data with various visual effects.</div>
+            </div>
+
+            <div class=" pt-16">
+                <h2 class="leading-normal font-white text-base text-2xl md:text-3xl lg:text-4xl font-bold pb-8 pt-8"> Impetus</h2>
+                <div class="flex justify-start w-full mb-12">
+                    <div class="h-1 font-white text-xl md:text-2xl lg:text-3xl opacity-90 my-0 py-0 rounded-t  "> Initially, I was just really interested in the concept of music visualization by program and wanted to learn and design it. During the exploration, I found out using my own emotional understanding to represent different music with various visuals is also fascinating. I can make it into a game to entertain people in that way.</div>
+            </div>
+
+            <div class=" pt-16">
+                <h2 class="leading-normal font-white text-base text-2xl md:text-3xl lg:text-4xl font-bold pb-8 pt-8"> Storyboard</h2>
+                <div class="flex justify-start w-full mb-12">
+                    <img src="image/storyboard.001.jpeg" alt="">
+            </div>
+            <!-- week1 -->
+            <div class=" pt-28">
+                <h2 class="leading-normal font-white text-base text-2xl md:text-3xl lg:text-4xl font-bold pb-8 pt-8"> Week1: USING PIEZO SENSOR</h2>
+                <div class="flex justify-start w-full mb-12">
+                    <div class="h-1 font-white text-2xl md:text-3xl lg:text-4xl opacity-90 my-0 py-0 rounded-t  "> At first, my idea was using a piezo sensor to read the vibration value of a record player while it playing music. But this program can only visualize the vibration of each song.</div>
+                  </div>
+            </div>
+
+            <div class="pt-12 ">
+                <img class="w-full pt-8 pb-8" src="image/project4_img1.jpg" alt="">
+                <img src="image/project4_1.gif" alt="">
+            </div>
+            <!-- week2 -->
+            <div class=" pt-28">
+                <h2 class="leading-normal font-white text-base text-2xl md:text-3xl lg:text-4xl font-bold pb-8 pt-8"> Week2: MUSIC VISUALIZATION USING MINIM LIBRARY </h2>
+                <div class="flex justify-start w-full mb-12">
+                    <div class="h-1 font-white text-2xl md:text-3xl lg:text-4xl opacity-90 my-0 py-0 rounded-t pb-24 "> During the second week, I choose to use Fast Fourier transform (FFT) to analysis music. I decided to use the scale of shapes to represent tempo and bobbles to represent the active state while playing songs. And also added some interaction with mouse and keyboard to change the shape and color of each elements to make more interesting as a visualizer.</div>
+                  </div>
+            </div>
+
+            <div class="pt-12 ">
+                <img class="w-full pt-8 pb-8" src="image/Frame 2.png" alt="">
+                <img class="w-full pt-8 pb-16" src="image/Frame 3.png" alt="">
+                <video width="full"  controls="">
+                    <source src="image/project4_2_1.mp4">
+                    Your browser does not support the video tag
+                </video>
+            </div>
+            <!-- week3 -->
+            <div class=" pt-28">
+                <h2 class="leading-normal font-white text-base text-2xl md:text-3xl lg:text-4xl font-bold pb-8 pt-8"> Week3: FINAL MUSIC PERFORMANCE GAME </h2>
+                <div class="flex justify-start w-full mb-12">
+                    <div class="h-1 font-white text-2xl md:text-3xl lg:text-4xl opacity-90 my-0 py-0 rounded-t pb-24 ">After maxim’s suggestion, I started to explore the possibility of visualization for each music sample.</div>
+                
+                  </div>
+                  <div class="h-1 font-white text-2xl md:text-3xl lg:text-4xl opacity-90 my-0 py-0 rounded-t pb-20 ">Still, I use minim library’s FFT analysis. The visualizer reads the audio data in concise time slices and does a Fourier transform on each slice, extracting the frequency components, and updates the visual display using the frequency information.</div>
+            </div>
+
+            <div class="pt-12 ">
+                <div class="flex justify-start  ">
+                <img class=" w-6/12 pt-8 pb-8 mr-8" src="image/fft1.png" alt="">
+                <img class=" w-6/12 pt-8 pb-16" src="image/fft2.png" alt="">
+                </div>
+                <img src="image/fft_code.gif" alt="">
+            </div>
+
+            <div class="h-1 font-white text-2xl md:text-3xl lg:text-4xl opacity-90 my-0 py-0 rounded-t pb-20 pt-32 ">For the music, because I want to have different instruments as different music samples for the user to interact with. So I use apple’s Garageband to create a piece of simple music.</div>
+            <img class="w-full pt-20 pb-8" src="image/garageband.png" alt="">
+
+            <div class="h-1 font-white text-2xl md:text-3xl lg:text-4xl opacity-90 my-0 py-0 rounded-t pb-20 pt-32 ">After exporting every single track as a "wav" file, I began to design the visualization of each track. I decide to use some organic shapes like rectangles and lines ellipse. I also tried to explore the 3d mode before, even the interface looks really cool, but it was too large to load on my laptop. So I give up because, as a game, it should have a smooth playing experience first. </div>
+            <img class="w-full pt-20 pb-8" src="image/project4_visual/project4_visual.001.jpeg" alt="">
+            <!-- final -->
+            <div class=" pt-4">
+                <h2 class="leading-normal font-white text-base text-4xl md:text-6xl lg:text-8xl font-bold pb-16 "> FINAL OUTCOME </h2>
+        </div>
+        <div class=" pb-64">
+            <img class=" pb-20" src="image/project4_04_code.gif" alt="">
+            <video class=" pb-20" width="full"  controls="">
+                <source  src="image/project4_04_final.mp4">
+                Your browser does not support the video tag
+            </video>
+        </div>
+
+        
+        <!-- content end -->
+
+        </div>
+      </div>
+      
+
+
+    <main> 
+        
+
+
+
+    </main>
+    <footer></footer>
+</body>
+<script>
+    $(function(){
+  var str = '#len'; //increment by 1 up to 1-nelemnts
+  $(document).ready(function(){
+    var i, stop;
+    i = 1;
+    stop = 4; //num elements
+    setInterval(function(){
+      if (i > stop){
+        return;
+      }
+      $('#len'+(i++)).toggleClass('bounce');
+    }, 500)
+  });
+});
+</script>
+</html>
+
