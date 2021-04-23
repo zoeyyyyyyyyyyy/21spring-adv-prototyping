@@ -4,9 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chaos 混沌</title>
+    <title>Chaos</title>
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+
+    <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet">
+
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <style class="INLINE_PEN_STYLESHEET_ID">
+        @import url("https://rsms.me/inter/inter.css");
         .hoverable {
       display: inline-block;
       backface-visibility: hidden;
@@ -17,6 +23,13 @@
       transition-duration: 0.3s;
       transition-property: transform;
     }
+
+    html {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+          "Noto Color Emoji";
+      }
     
     .hoverable:before {
       position: absolute;
@@ -25,7 +38,7 @@
       content: "";
       top: 100%;
       left: 5%;
-      height: 10px;
+      height: 5px;
       width: 90%;
       opacity: 0;
       background: -webkit-radial-gradient(center, ellipse, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
@@ -88,15 +101,19 @@
       }
     }
     body {
+      
       background-color: black;
-      font-weight: 600;
-      text-align: center !important;
-      color: white;
+      
+      color: rgb(255, 255, 255);
+    }
+    h1,h2,h3,h4,p {
+        font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
     }
     
     nav {
       background: none !important;
       text-transform: uppercase;
+
     }
     nav li {
       margin-left: 5em;
@@ -108,22 +125,227 @@
       transition: 0.5s color ease-in-out;
     }
     
-    .page-title {
-      opacity: 0.75 !important;
-    }
-
-      .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 65%;
-  }
+   
       </style>
+      <style type="text/css">
+
+ @font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url("font-files/Inter-Thin.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Thin.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 100;
+  font-display: swap;
+  src: url("font-files/Inter-ThinItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-ThinItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("font-files/Inter-ExtraLight.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-ExtraLight.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url("font-files/Inter-ExtraLightItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-ExtraLightItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("font-files/Inter-Light.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Light.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("font-files/Inter-LightItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-LightItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("font-files/Inter-Regular.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Regular.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("font-files/Inter-Italic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Italic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("font-files/Inter-Medium.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Medium.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("font-files/Inter-MediumItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-MediumItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("font-files/Inter-SemiBold.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-SemiBold.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("font-files/Inter-SemiBoldItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-SemiBoldItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("font-files/Inter-Bold.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Bold.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("font-files/Inter-BoldItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-BoldItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("font-files/Inter-ExtraBold.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-ExtraBold.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url("font-files/Inter-ExtraBoldItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-ExtraBoldItalic.woff?v=3.18") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("font-files/Inter-Black.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-Black.woff?v=3.18") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url("font-files/Inter-BlackItalic.woff2?v=3.18") format("woff2"),
+       url("font-files/Inter-BlackItalic.woff?v=3.18") format("woff");
+}
+
+
+/* ----------------------- variable ----------------------- */
+
+@font-face {
+  font-family: 'Inter var';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('font-files/Inter-roman.var.woff2?v=3.18') format('woff2');
+  font-named-instance: 'Regular';
+}
+
+@font-face {
+  font-family: 'Inter var';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('font-files/Inter-italic.var.woff2?v=3.18') format('woff2');
+  font-named-instance: 'Italic';
+}
+
+/* ----------- experimental multi-axis variable -----------
+
+Slant axis is not yet widely supported (as of February 2019) and thus this
+multi-axis single-file variable font is opt-in rather than the default.
+When using this, you will likely need to set font-variation-settings explicitly, e.g:
+  * { font-variation-settings: "slnt" 0deg }
+  .italic { font-variation-settings: "slnt" 10deg }
+*/
+
+@font-face {
+  font-family: 'Inter var experimental';
+  font-style: oblique 0deg 10deg;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('font-files/Inter.var.woff2?v=3.18') format('woff2');
+}
+
+/* Legacy name (became legacy on Feb 2, 2019) */
+@font-face {
+  font-family: 'Inter var alt';
+  font-weight: 100 900;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  font-display: swap;
+  src: url("font-files/Inter-roman.var.woff2?v=3.18") format("woff2");
+}
+@font-face {
+  font-family: 'Inter var alt';
+  font-weight: 100 900;
+  font-style: italic;
+  font-named-instance: 'Italic';
+  font-display: swap;
+  src: url("font-files/Inter-italic.var.woff2?v=3.18") format("woff2");
+}
+        
+        
+        </style>
 
 
      
 </head>
 <body>
+    <!-- nav -->
     <div class="container-fluid">
         <nav class="navbar navbar-inverse">
           <div class="container-fluid">
@@ -138,22 +360,78 @@
           </div>
         </nav>
         <div id="what-the-hell-is-this">
-          <div class="page-title">
-            <img class="center" width= 1000px src="image/project_1.png" alt="Project 1 page1">
-            <img class="center" width= 1000px src="image/project_2.png" alt="Project 1 page2">
-            <img class="center" width= 100% src="image/project_3.png" alt="Project 1 page3">
+             <!-- nav end -->
+
+          <!-- title -->
+          <div class="text-center px-3 lg:px-0 py-16">
+            <h1 class="my-4 text-3xl md:text-4xl lg:text-7xl font-white font-extrabold leading-tight font-family: 'Inter' font-style:  normal font-display: swap font-weight: 900">
+              Project 1 : Chaos
+            </h1>
+            <p class="leading-normal pt-10 text-gray-100 text-base font-regular text-xl md:text-2xl lg:text-3xl mb-8">
+                Interactive project design with processing.
+            </p>
+    
+          </div>
+          <!-- title end -->
+          <!-- content -->
+
+          <div  class="container ">
+            <img class="w-full pt-8 pb-8" src="image/project_1.png" alt="Project 1 page1">
+            <img class="w-full pt-8 pb-8" src="image/project_2.png" alt="Project 1 page2">
+            <img class="w-full pt-8 pb-8" src="image/project_3.png" alt="Project 1 page3">
             
-  
+          
             <video class="center"  controls>
               <source src="image/project1_final.mp4" type="video/mp4">
-              <!-- <source src="movie.ogg" type="video/ogg"> -->
-            Your browser does not support the video tag.
-            </video>
-          <h1 height= 400px style="background-color:balck; color: black " >。</h1>
-          <h1 height= 400px style="background-color:balck; color: black " >。</h1>
-          <h1 height= 400px style="background-color:balck; color: black " >。</h1>
+            </div> 
             
+            <div class="container ">
+            <!-- week1 -->
+            <div class="container w-full pt-28">
+                <h2 class="leading-normal font-white text-base text-2xl md:text-3xl lg:text-4xl font-bold pb-8 pt-8"> Week1: DESIGN DIAGRAM</h2>
+                <div class="flex justify-start w-full mb-12">
+                    <div class="h-1 font-white text-2xl md:text-3xl lg:text-4xl opacity-90 my-0 py-0 rounded-t  ">The first week I came with 2 different ideas: Solar system and Smoke.</div>
+                  </div>
+            </div>
+
+            <div class="pt-12 ">
+                <img class="w-full pt-8 pb-8" src="image/Slide 16_9 - 1.png" alt="">
+                <img src="image/Slide 16_9 - 2.png" alt="">
+            </div>
+            <!-- week2 -->
+            <div class=" pt-28">
+                <h2 class="leading-normal font-white text-base text-2xl md:text-3xl lg:text-4xl font-bold pb-8 pt-8"> Week2: EXPLORE ON PROCESSING </h2>
+                <div class="flex justify-start w-full mb-12">
+                    <div class="h-1 font-white text-2xl md:text-3xl lg:text-4xl opacity-90 my-0 py-0 rounded-t pb-24 "> I tried to explore processing during this week and tried to design the system.</div>
+                  </div>
+            </div>
+
+            <div class=" pb-8 pt-8">
+              <video class=" pb-20 w-full" width="full"  controls="">
+                  <source  src="image/project1_code_01 (Stitched Clip).mp4">
+                  Your browser does not support the video tag
+              </video>
           </div>
+          <div class=" pb-8 pt-8">
+            <video class="  w-full" width="full"  controls="">
+                <source  src="image/Screen Recording 2021-02-15 at 12.37.11 PM_1.mp4">
+                Your browser does not support the video tag
+            </video>
+            <p class="pt-4 pb-64 text-center font-white opacity-40 text-l md:text-xl lg:text-2xl ">Version 1 </p>
+        </div>
+
+            </div>
+            <!-- week3 -->
+         
+                
+            </div>
+
+            
+            
+
+        
+        <!-- content end -->
+
         </div>
       </div>
       
@@ -184,8 +462,4 @@
 });
 </script>
 </html>
-
-
-
-
 
